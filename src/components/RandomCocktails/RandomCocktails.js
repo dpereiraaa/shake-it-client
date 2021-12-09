@@ -18,6 +18,8 @@ function RandomCocktails() {
       const response8 = await axios.get(apiURL);
       const response9 = await axios.get(apiURL);
       const response10 = await axios.get(apiURL);
+      const response11 = await axios.get(apiURL);
+      const response12 = await axios.get(apiURL);
 
       const tenResponses = [];
 
@@ -31,7 +33,9 @@ function RandomCocktails() {
         response7.data.drinks,
         response8.data.drinks,
         response9.data.drinks,
-        response10.data.drinks
+        response10.data.drinks,
+        response11.data.drinks,
+        response12.data.drinks
       );
 
       setCocktails(tenResponses);
@@ -41,13 +45,12 @@ function RandomCocktails() {
   }, []);
 
   return (
-    <div>
+    <div className="grid grid-cols-4">
       {cocktails.map((oneCocktail) => {
-        console.log("oneCocktail", oneCocktail);
         return (
-          <div>
-            <p>{oneCocktail[0].strDrink}</p>
+          <div className="flex flex-col justify-center items-center">
             <img src={oneCocktail[0].strDrinkThumb} width="150px"></img>
+            <p>{oneCocktail[0].strDrink}</p>
           </div>
         );
       })}

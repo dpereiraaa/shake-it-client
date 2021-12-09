@@ -8,9 +8,9 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav className="Navbar">
+    <nav className="flex justify-between items-center w-screen h-15 bg-red-50">
       <Link to="/">
-        <button>Home</button>
+        <img className="h-14" src="images/logo.png"></img>
       </Link>
 
       {isLoggedIn && (
@@ -31,10 +31,11 @@ function Navbar() {
         </>
       )}
 
-      <div className="profile-img-wrapper">
+      <div className="">
         {user && (
           <Link to="/profile">
             <img className="profile-img" src={user.image} alt="profile" />
+            <p>{user.name}</p>
           </Link>
         )}
       </div>

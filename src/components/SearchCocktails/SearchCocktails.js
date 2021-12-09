@@ -34,15 +34,16 @@ function SearchCocktails() {
 
   return (
     <div>
-      <div>
+      <div className="flex justify-center items-center bg-red-50">
         <input
           type="text"
           placeholder="Search"
           value={searchTerm}
           onChange={handleSearchTerm}
+          className="border-2 border-black rounded-md"
         />
       </div>
-      <div>
+      <div className="grid grid-cols-4">
         {searchResults &&
           searchResults.map((oneCocktail) => {
             return (
@@ -51,7 +52,7 @@ function SearchCocktails() {
                 to={"/details/" + oneCocktail.idDrink}
                 onClick={clearOnClick}
               >
-                <div>
+                <div className="flex flex-col justify-center items-center">
                   <img src={oneCocktail.strDrinkThumb} width="150px"></img>
                   <h1>{oneCocktail.strDrink}</h1>
                 </div>

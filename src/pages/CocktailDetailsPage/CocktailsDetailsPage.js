@@ -17,7 +17,6 @@ function CocktailDetailsPage() {
 
     fetchData();
   }, [cocktailId]);
-  console.log("cocktail :>> ", cocktail);
 
   return (
     <div>
