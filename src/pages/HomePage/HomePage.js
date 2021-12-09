@@ -1,7 +1,9 @@
+import RandomCocktails from "../../components/RandomCocktails/RandomCocktails";
+
 function HomePage() {
   return (
     <div>
-      <h1>Home Page</h1>
+      <RandomCocktails />
     </div>
   );
 }
