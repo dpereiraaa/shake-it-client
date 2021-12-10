@@ -20,10 +20,14 @@ function CocktailDetailsPage() {
 
   return (
     <div>
-      <div>
-        <img src={cocktail && cocktail[0].strDrinkThumb} width="150px"></img>
-        <span>
-          <h1>{cocktail && cocktail[0].strDrink}</h1>
+      <div className="m-10 flex justify-center">
+        <img
+          src={cocktail && cocktail[0].strDrinkThumb}
+          width="150px"
+          className="border rounded-xl"
+        ></img>
+        <span className="ml-10 flex flex-col justify-center">
+          <h1 className="text-5xl">{cocktail && cocktail[0].strDrink}</h1>
           <ul>
             <p>{cocktail && cocktail[0].strIngredient1}</p>
             <p>{cocktail && cocktail[0].strIngredient2}</p>

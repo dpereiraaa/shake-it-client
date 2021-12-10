@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const apiURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
@@ -45,13 +46,18 @@ function RandomCocktails() {
   }, []);
 
   return (
-    <div className="grid grid-cols-4">
+    <div className="grid grid-cols-3">
       {cocktails.map((oneCocktail) => {
         return (
-          <div className="flex flex-col justify-center items-center">
-            <img src={oneCocktail[0].strDrinkThumb} width="150px"></img>
-            <p>{oneCocktail[0].strDrink}</p>
-          </div>
+          <Link
+            key={oneCocktail[0].idDrink}
+            to={"/details/" + oneCocktail[0].idDrink}
+          >
+            <div className="flex flex-col justify-center items-center">
+              <img src={oneCocktail[0].strDrinkThumb} width="150px"></img>
+              <p>{oneCocktail[0].strDrink}</p>
+            </div>
+          </Link>
         );
       })}
     </div>

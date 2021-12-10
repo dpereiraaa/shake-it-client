@@ -34,7 +34,7 @@ function SearchCocktails() {
 
   return (
     <div>
-      <div className="flex justify-center items-center bg-red-50">
+      <div className="flex justify-center items-center">
         <input
           type="text"
           placeholder="Search"
