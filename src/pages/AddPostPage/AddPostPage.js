@@ -49,8 +49,6 @@ function AddPostPage(props) {
 
   return (
     <div className="AddPostPage">
-      <h1>Sign Up</h1>
-
       <form onSubmit={handlePostSubmit}>
         <label>Title:</label>
         <input type="text" name="title" value={title} onChange={handleTitle} />

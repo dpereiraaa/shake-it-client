@@ -10,12 +10,12 @@ function Navbar() {
   return (
     <nav>
       {isLoggedIn && (
-        <div className="flex justify-between items-center w-screen h-15">
+        <div className="flex justify-between items-center h-auto">
           <div className="flex items-center">
             <div>
               <Link to="/">
                 <span className="flex items-center">
-                  <img className="h-16" src="images/logo.png"></img>
+                  <img className="h-14" src="images/logo.png"></img>
                   <p className="font-semibold text-xl">Shake it!</p>
                 </span>
               </Link>
@@ -31,7 +31,7 @@ function Navbar() {
             </div>
           </div>
           <div>
-            <div className="flex">
+            <div className="flex flex-row items-center">
               {user && (
                 <Link to="/profile">
                   <img
