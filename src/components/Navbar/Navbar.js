@@ -8,24 +8,30 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav className="flex justify-between items-center w-screen h-15">
-      <Link to="/">
-        <div className="flex items-center">
-          <img className="h-14" src="images/logo.png"></img>
-          <p>Shake it!</p>
-        </div>
-      </Link>
-
+    <nav>
       {isLoggedIn && (
-        <div>
-          {/* <div>
-            <p>Random Cocktail</p>
-            <p>By Ingridient</p>
-            <p>What're people drinking?</p>
-          </div> */}
+        <div className="flex justify-between items-center w-screen h-15">
+          <div className="flex items-center">
+            <div>
+              <Link to="/">
+                <span className="flex items-center">
+                  <img className="h-16" src="images/logo.png"></img>
+                  <p className="font-semibold text-xl">Shake it!</p>
+                </span>
+              </Link>
+            </div>
+            <div className="flex ml-8 space-x-6">
+              <Link to="/random-cocktail">
+                <p>Random Cocktail</p>
+              </Link>
+              <p>By Ingridient</p>
+              <Link to="/all-posts">
+                <p>What're people drinking?</p>
+              </Link>
+            </div>
+          </div>
           <div>
-            <button onClick={logOutUser}>Logout</button>
-            <div className="">
+            <div className="flex">
               {user && (
                 <Link to="/profile">
                   <img
@@ -35,6 +41,7 @@ function Navbar() {
                     width="50px"
                   />
                   <p>{user.name}</p>
+                  <button onClick={logOutUser}>Logout</button>
                 </Link>
               )}
             </div>
