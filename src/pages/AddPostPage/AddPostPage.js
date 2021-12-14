@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import fileService from "../../services/file.service";
 
@@ -26,7 +26,7 @@ function AddPostPage(props) {
         headers: { Authorization: `Bearer ${authToken}` },
       });
 
-      //   navigate("/login");
+      navigate("/all-posts");
     } catch (error) {
       setErrorMessage("Something went wrong");
     }

@@ -12,16 +12,26 @@ import CocktailDetailsPage from "./pages/CocktailDetailsPage/CocktailsDetailsPag
 import OneRandomCocktailPage from "./pages/OneRandomCocktailPage/OneRandomCocktail";
 import AddPostPage from "./pages/AddPostPage/AddPostPage";
 import AllPostsPage from "./pages/AllPostsPage/AllPostsPage";
+import ByCocktailsPage from "./pages/ByCocktailsPage/ByCocktailsPage";
+import ByIngridientsPage from "./pages/ByIngridientsPage/ByIngridientsPage";
 
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
-import SearchCocktails from "./components/SearchCocktails/SearchCocktails";
+
+import { useState } from "react";
 
 function App() {
+  // const [searchButton, setSearchButton] = useState(false);
   return (
     <div className="App">
       <Navbar />
-      <SearchCocktails />
+      {/* <div>
+        <button onClick={() => setSearchButton(!searchButton)}>
+          {searchButton ? "Search by Cocktails" : "Search by Ingridients"}
+          {searchButton && <SearchCocktails />}
+        </button>
+        {!searchButton && <SearchIngridients />}
+      </div> */}
 
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -54,9 +64,40 @@ function App() {
             </IsAnon>
           }
         />
+        <Route
+          path="/byCocktails"
+          element={
+            <IsPrivate>
+              <ByCocktailsPage />
+            </IsPrivate>
+          }
+        />
 
-        <Route path="/details/:cocktailId" element={<CocktailDetailsPage />} />
-        <Route path="/random-cocktail" element={<OneRandomCocktailPage />} />
+        <Route
+          path="/byIngridients"
+          element={
+            <IsPrivate>
+              <ByIngridientsPage />
+            </IsPrivate>
+          }
+        />
+
+        <Route
+          path="/details/:cocktailId"
+          element={
+            <IsPrivate>
+              <CocktailDetailsPage />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/random-cocktail"
+          element={
+            <IsPrivate>
+              <OneRandomCocktailPage />
+            </IsPrivate>
+          }
+        />
         <Route path="/add-post" element={<AddPostPage />} />
         <Route path="/all-posts" element={<AllPostsPage />} />
 

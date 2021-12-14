@@ -6,6 +6,8 @@ const apiURL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
 
 function CocktailDetailsPage() {
   const [cocktail, setCocktail] = useState(null);
+  const [favorite_drinks, setFavorite_drinks] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(undefined);
   const { cocktailId } = useParams();
 
   useEffect(() => {
@@ -17,6 +19,23 @@ function CocktailDetailsPage() {
 
     fetchData();
   }, [cocktailId]);
+
+  const handleFavoriteDrinkChange = (e) => setFavorite_drinks(e.target.value);
+
+  const handleFavoriteDrink = async (e, cocktailId) => {
+    e.preventDefault();
+    try {
+      const requestBody = { favorite_drinks: cocktailId };
+
+      const authToken = localStorage.getItem("authToken");
+      await axios.put("http://localhost:5005/api/users/current", requestBody, {
+        headers: { Authorization: `Bearer ${authToken}` },
+      });
+      setFavorite_drinks(true);
+    } catch (error) {
+      setErrorMessage("Something went wrong");
+    }
+  };
 
   return (
     <div>
@@ -51,6 +70,15 @@ function CocktailDetailsPage() {
         <h3>Preparation:</h3>
         <p>{cocktail && cocktail[0].strInstructions}</p>
       </span>
+      <form onSubmit={(e) => handleFavoriteDrink(e, cocktail[0].idDrink)}>
+        <input
+          type="submit"
+          name="favorite_drinks"
+          value={favorite_drinks}
+          onChange={handleFavoriteDrinkChange}
+        ></input>
+        <button>Add to Favorites</button>
+      </form>
     </div>
   );
 }

@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 
-const apiURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
+const apiURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=";
 
-function SearchCocktails() {
+function SearchIngridients() {
   const [searchTerm, setSearchTerm] = useState(null);
   const [searchResults, setSearchResults] = useState(null);
 
@@ -63,4 +63,4 @@ function SearchCocktails() {
   );
 }
 
-export default SearchCocktails;
+export default SearchIngridients;

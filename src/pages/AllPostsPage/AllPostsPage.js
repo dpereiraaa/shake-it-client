@@ -15,8 +15,8 @@ function AllPostsPage() {
           headers: { Authorization: `Bearer ${authToken}` },
         });
 
-        setAllPosts(response.data);
-        console.log("allposts :>> ", response.data);
+        let mostRecent = response.data.reverse();
+        setAllPosts(mostRecent);
       } catch (error) {}
     };
     fetchData();
@@ -25,7 +25,6 @@ function AllPostsPage() {
   const handleCommentChange = (e) => setComment_description(e.target.value);
 
   const handleComment = async (e, postId) => {
-    console.log("postId :>> ", postId);
     e.preventDefault();
     try {
       const requestBody = { comment_description };
