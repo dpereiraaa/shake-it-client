@@ -25,13 +25,12 @@ function ProfilePage() {
   useEffect(() => {
     const fetchData = async () => {
       if (userFavorites) {
-        console.log("userFavorites :>> ", userFavorites);
         for (let i = 0; i < userFavorites.length; i++) {
-          let responseObj = await axios.get(apiURL + userFavorites);
-          userFavoritesNewArr.push(responseObj);
-          console.log("newarray :>> ", userFavoritesNewArr);
+          let responseObj = await axios.get(apiURL + userFavorites[i]);
+          console.log("newarray :>> ", responseObj.data);
         }
       }
+      setUserFavoritesNewArr();
     };
     fetchData();
   }, [userFavorites, userFavoritesNewArr]);
@@ -40,9 +39,9 @@ function ProfilePage() {
     <div>
       <p>{user && user.name}</p>
       <p>Favorite Cocktails:</p>
-      {userFavorites &&
-        userFavorites.map((eachFavorite) => {
-          return <p>{eachFavorite}</p>;
+      {userFavoritesNewArr &&
+        userFavoritesNewArr.map((eachFavorite) => {
+          return <p>{eachFavorite.strDrink}</p>;
         })}
     </div>
   );
