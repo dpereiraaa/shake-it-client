@@ -44,7 +44,7 @@ function Navbar() {
                 >
                   <span>
                     <p className="font-semibold">{user.name}</p>
-                    {/* <button onClick={logOutUser}>Logout</button> */}
+                    <button onClick={logOutUser}>Logout</button>
                   </span>
                   <span>
                     <img

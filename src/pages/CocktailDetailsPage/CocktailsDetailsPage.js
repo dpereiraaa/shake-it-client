@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
+import { AuthContext } from "../../context/auth.context";
 
 const apiURL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
 
@@ -9,6 +10,7 @@ function CocktailDetailsPage() {
   const [favorite_drinks, setFavorite_drinks] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
   const { cocktailId } = useParams();
+  const { user, setUser } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,10 +30,16 @@ function CocktailDetailsPage() {
       const requestBody = { favorite_drinks: cocktailId };
 
       const authToken = localStorage.getItem("authToken");
-      await axios.put("http://localhost:5005/api/users/current", requestBody, {
-        headers: { Authorization: `Bearer ${authToken}` },
-      });
+      const response = await axios.put(
+        "http://localhost:5005/api/users/current",
+        requestBody,
+        {
+          headers: { Authorization: `Bearer ${authToken}` },
+        }
+      );
       setFavorite_drinks(true);
+      setUser(response.data);
+      console.log("response.data :>> ", response.data);
     } catch (error) {
       setErrorMessage("Something went wrong");
     }
@@ -44,6 +52,7 @@ function CocktailDetailsPage() {
           src={cocktail && cocktail[0].strDrinkThumb}
           width="150px"
           className="border rounded-xl"
+          alt=""
         ></img>
         <span className="ml-10 flex flex-col justify-center">
           <h1 className="text-5xl">{cocktail && cocktail[0].strDrink}</h1>
@@ -71,13 +80,14 @@ function CocktailDetailsPage() {
         <p>{cocktail && cocktail[0].strInstructions}</p>
       </span>
       <form onSubmit={(e) => handleFavoriteDrink(e, cocktail[0].idDrink)}>
-        <input
+        <button
           type="submit"
           name="favorite_drinks"
           value={favorite_drinks}
           onChange={handleFavoriteDrinkChange}
-        ></input>
-        <button>Add to Favorites</button>
+        >
+          Add to Favorites
+        </button>
       </form>
     </div>
   );
