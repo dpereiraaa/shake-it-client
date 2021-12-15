@@ -9,7 +9,6 @@ function ProfilePage() {
   const { user } = useContext(AuthContext);
   const [userFavorites, setUserFavorites] = useState(null);
   const [userFavoritesNewArr, setUserFavoritesNewArr] = useState([]);
-  console.log("user :>> ", user);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +17,6 @@ function ProfilePage() {
         "http://localhost:5005/api/users/current",
         { headers: { Authorization: `Bearer ${authToken}` } }
       );
-      console.log("response :>> ", response.data);
       setUserFavorites(response.data.favorite_drinks);
     };
     fetchData();
@@ -27,10 +25,12 @@ function ProfilePage() {
   useEffect(() => {
     const fetchData = async () => {
       if (userFavorites) {
-        for (let i = 0; i < userFavorites.length; i++) {}
-        let responseObj = await axios.get(apiURL + userFavorites);
-        userFavoritesNewArr.push(responseObj);
-        console.log("userFavoritesNewArr :>> ", userFavoritesNewArr);
+        console.log("userFavorites :>> ", userFavorites);
+        for (let i = 0; i < userFavorites.length; i++) {
+          let responseObj = await axios.get(apiURL + userFavorites);
+          userFavoritesNewArr.push(responseObj);
+          console.log("newarray :>> ", userFavoritesNewArr);
+        }
       }
     };
     fetchData();
