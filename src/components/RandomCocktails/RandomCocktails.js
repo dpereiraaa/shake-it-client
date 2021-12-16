@@ -49,29 +49,29 @@ function RandomCocktails() {
   return (
     <div className="bg-red-50 h-full pt-16">
       <div>
-        <h1 className="text-4xl font-medium mb-16">Popular Cocktails</h1>
+        <h1 className="text-4xl font-semibold mb-16">Popular Cocktails</h1>
       </div>
-      <div className="grid grid-cols-3 h-screen ml-44 mr-44">
+      <div className="grid grid-cols-2 md:grid-cols-3 h-screen ml-44 mr-44">
         {cocktails.map((oneCocktail) => {
           return (
             <Link
               key={oneCocktail[0].idDrink}
               to={"/details/" + oneCocktail[0].idDrink}
             >
-              <div className="flex items-center space-x-5 mr-5 hover:shadow hover:bg-red-100">
+              <div className="md:flex items-center space-x-5 mr-5 hover:shadow-lg">
                 <img
                   src={oneCocktail[0].strDrinkThumb}
                   width="150px"
-                  className="rounded"
+                  className="rounded "
                   alt=""
                 ></img>
                 <span className="text-left">
-                  <p className="text-lg font-extrabold">
+                  <p className="text-lg font-extrabold ">
                     {oneCocktail[0].strDrink}
                   </p>
                   <span>
-                    <p>{oneCocktail[0].strCategory}</p>
-                    <p>{oneCocktail[0].strAlcoholic}</p>
+                    <p className="">{oneCocktail[0].strCategory}</p>
+                    <p className="">{oneCocktail[0].strAlcoholic}</p>
                   </span>
                 </span>
               </div>

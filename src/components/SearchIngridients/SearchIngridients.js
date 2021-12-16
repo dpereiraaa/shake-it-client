@@ -34,6 +34,7 @@ function SearchIngridients() {
 
   return (
     <div className="bg-red-50 h-screen pt-16">
+      <p className="font-semibold text-xl pb-5">Ingridient name:</p>
       <div className="flex justify-center items-center space-x-5">
         <div className="flex justify-center items-center">
           <input
@@ -41,7 +42,7 @@ function SearchIngridients() {
             placeholder=" Search"
             value={searchTerm}
             onChange={handleSearchTerm}
-            className=" w-64 h-8 border border-gray-400 focus:border-black"
+            className=" w-64 h-8 border border-gray-400 focus:border-black bg-white"
           />
         </div>
       </div>

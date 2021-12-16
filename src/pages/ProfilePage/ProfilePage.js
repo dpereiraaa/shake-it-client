@@ -32,7 +32,6 @@ function ProfilePage() {
         { headers: { Authorization: `Bearer ${authToken}` } }
       );
       setUserPosts(response.data.user_posts);
-      console.log("posts :>> ", response.data.user_posts);
     };
     fetchData();
   }, []);
@@ -55,21 +54,21 @@ function ProfilePage() {
   }, [userFavorites]);
 
   return (
-    <div className="flex justify-center">
-      <div className="w-3/4 bg-red-100 rounded h-full">
+    <div className="flex justify-center bg-red-50 h-full pt-16 pb-36">
+      <div className="w-3/4 h-full">
         <span className="flex justify-center items-center mt-12 mb-12 ml-6 space-x-7">
           <img
             src={user && user.image}
-            className="rounded-full w-24 h-24"
+            className="rounded-full w-16 h-16 md:w-24 md:h-24"
             alt=""
           ></img>
-          <p className="font-bold text-5xl">{user && user.name}</p>
+          <p className="font-bold text-xl md:text-5xl">{user && user.name}</p>
         </span>
         <span>
           <p className=" flex justify-center font-bold text-2xl mb-10 ml-6">
             Favorite Cocktails:
           </p>
-          <span className="grid grid-cols-3">
+          <span className="grid grid-cols-2 md:grid-cols-3">
             {userFavoritesNewArr &&
               userFavoritesNewArr.map((eachFavorite) => {
                 return (
@@ -77,11 +76,10 @@ function ProfilePage() {
                     key={eachFavorite.idDrink}
                     to={"/details/" + eachFavorite.idDrink}
                   >
-                    <div className="flex flex-col items-center mb-5">
+                    <div className="flex flex-col items-center mb-5  space-y-2">
                       <img
                         src={eachFavorite.strDrinkThumb}
-                        width="150px"
-                        className="rounded-lg shadow hover:shadow-xl hover:opacity-80"
+                        className="rounded-lg shadow hover:shadow-xl hover:opacity-80 w-2/4 md:w-2/5"
                         alt=""
                       ></img>
                       <p>{eachFavorite.strDrink}</p>
@@ -93,16 +91,15 @@ function ProfilePage() {
           <p className=" flex justify-center font-bold text-2xl mt-10 mb-10 ml-6">
             Posts:
           </p>
-          <span className="grid grid-cols-3">
+          <span className="grid grid-cols-2 md:grid-cols-3">
             {userPosts &&
               userPosts.map((eachPost) => {
                 return (
                   <Link key={eachPost._id} to={"/all-posts"}>
-                    <div className="flex flex-col items-center space-y-3">
+                    <div className="flex flex-col items-center space-y-2">
                       <img
                         src={eachPost.image}
-                        width="150px"
-                        className="rounded-lg shadow hover:shadow-xl hover:opacity-80"
+                        className="rounded-lg shadow hover:shadow-xl hover:opacity-80  w-2/4 md:w-2/5"
                         alt=""
                       ></img>
                       <p>{eachPost.title}</p>

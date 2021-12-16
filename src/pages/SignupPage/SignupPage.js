@@ -56,33 +56,71 @@ function SignupPage(props) {
   };
 
   return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+    <div className="bg-red-50 h-screen">
+      <div className="flex justify-center bg-red-50 pt-16">
+        <div className="shadow-red-400 p-10 border border-red-200 rounded-lg">
+          <p className="font-semibold text-xl pb-5">Sign up:</p>
+          <span>
+            <form
+              onSubmit={handleSignupSubmit}
+              className="flex flex-col justify-center"
+            >
+              <label>Email:</label>
+              <input
+                type="text"
+                name="email"
+                value={email}
+                onChange={handleEmail}
+                className="h-8 border border-gray-400 focus:border-black mb-10 bg-white"
+              />
 
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="text" name="email" value={email} onChange={handleEmail} />
+              <label>Password:</label>
+              <input
+                type="password"
+                name="description"
+                value={password}
+                onChange={handlePassword}
+                className="h-8 border border-gray-400 focus:border-black mb-10 bg-white"
+              />
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+              <label>Name:</label>
+              <input
+                type="text"
+                name="name"
+                value={name}
+                onChange={handleName}
+                className="h-8 border border-gray-400 focus:border-black mb-10 bg-white"
+              />
 
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
+              <input
+                type="file"
+                onChange={handleFileUpload}
+                className="mb-16"
+              ></input>
 
-        <input type="file" onChange={handleFileUpload}></input>
+              <button
+                type="submit"
+                className="p-2 bg-red-200 rounded-full hover:bg-red-400 mb-3"
+              >
+                Create account
+              </button>
 
-        <button type="submit">Sign Up</button>
-      </form>
+              <p className="font-extralight text-sm mb-4">
+                Already have account?
+              </p>
+              <Link
+                to={"/login"}
+                className="p-1 bg-red-200 rounded-full hover:bg-red-400 text-sm"
+              >
+                {" "}
+                Login
+              </Link>
+            </form>
+          </span>
+        </div>
+      </div>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
     </div>
   );
 }

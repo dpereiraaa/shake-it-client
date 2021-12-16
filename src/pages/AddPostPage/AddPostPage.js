@@ -48,23 +48,49 @@ function AddPostPage(props) {
   };
 
   return (
-    <div className="AddPostPage">
-      <form onSubmit={handlePostSubmit}>
-        <label>Title:</label>
-        <input type="text" name="title" value={title} onChange={handleTitle} />
+    <div className="bg-red-50 h-screen">
+      <div className="flex justify-center bg-red-50 pt-16">
+        <div className="shadow-red-400 p-10 border border-red-200 rounded-lg">
+          <p className="font-semibold text-xl pb-5">Add a Post:</p>
+          <span>
+            <form
+              onSubmit={handlePostSubmit}
+              className="flex flex-col justify-center"
+            >
+              <label>Title:</label>
+              <input
+                type="text"
+                name="title"
+                value={title}
+                onChange={handleTitle}
+                className="h-8 border border-gray-400 focus:border-black mb-10 bg-white"
+              />
 
-        <label>Description:</label>
-        <input
-          type="description"
-          name="description"
-          value={description}
-          onChange={handleDescription}
-        />
+              <label>Description:</label>
+              <input
+                type="description"
+                name="description"
+                value={description}
+                onChange={handleDescription}
+                className="h-8 border border-gray-400 focus:border-black mb-10 bg-white"
+              />
 
-        <input type="file" onChange={handleFileUpload}></input>
+              <input
+                type="file"
+                onChange={handleFileUpload}
+                className="mb-16"
+              ></input>
 
-        <button type="submit">Post!</button>
-      </form>
+              <button
+                type="submit"
+                className="p-2 bg-red-200 rounded-full hover:bg-red-400"
+              >
+                Post!
+              </button>
+            </form>
+          </span>
+        </div>
+      </div>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>

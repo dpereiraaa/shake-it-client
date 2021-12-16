@@ -71,7 +71,11 @@ function CocktailDetailsPage() {
                     value={favorite_drinks}
                     onChange={handleFavoriteDrinkChange}
                   >
-                    Favorite
+                    <img
+                      src="./../../../images/favorite.png"
+                      alt=""
+                      className="w-2/2 hover:opacity-70 focus:opacity-70"
+                    ></img>
                   </button>
                 </form>
               </span>

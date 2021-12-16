@@ -47,22 +47,55 @@ function LoginPage(props) {
   };
 
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
+    <div className="bg-red-50 h-screen">
+      <div className="flex justify-center bg-red-50 pt-16">
+        <div className="shadow-red-400 p-16 border border-red-200 rounded-lg">
+          <p className="font-semibold text-xl pb-5">Login</p>
+          <span>
+            <form
+              onSubmit={handleLoginSubmit}
+              className="flex flex-col justify-center"
+            >
+              <label>Email:</label>
+              <input
+                type="text"
+                name="email"
+                value={email}
+                onChange={handleEmail}
+                className="h-8 border border-gray-400 focus:border-black mb-10 bg-white"
+              />
 
-      <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input type="text" name="email" value={email} onChange={handleEmail} />
+              <label>Password:</label>
+              <input
+                type="password"
+                name="password"
+                value={password}
+                onChange={handlePassword}
+                className="h-8 border border-gray-400 focus:border-black mb-10 bg-white"
+              />
 
-        <label>Password:</label>
-        <input type="password" name="password" value={password} onChange={handlePassword} />
+              <button
+                type="submit"
+                className="p-2 bg-red-200 rounded-full hover:bg-red-400 mb-3 "
+              >
+                Login
+              </button>
+              <p className="font-extralight text-sm mb-4">
+                Don't have an account yet?
+              </p>
+              <Link
+                to={"/signup"}
+                className="p-1 bg-red-200 rounded-full hover:bg-red-400 text-sm"
+              >
+                {" "}
+                Sign Up
+              </Link>
+            </form>
+          </span>
+        </div>
+      </div>
 
-        <button type="submit">Login</button>
-      </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
     </div>
   );
 }

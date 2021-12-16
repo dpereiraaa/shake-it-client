@@ -9,8 +9,7 @@ function OneRandomCocktailPage() {
   const [cocktail, setCocktail] = useState(null);
   const [favorite_drinks, setFavorite_drinks] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
-  const { cocktailId } = useParams();
-  const { user, setUser } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,59 +45,66 @@ function OneRandomCocktailPage() {
   };
 
   return (
-    <div className="flex justify-center">
-      <div className=" mt-16 w-1/2 flex justify-center border">
-        <span className="m-10">
-          <img
-            src={cocktail && cocktail[0].strDrinkThumb}
-            className="border rounded w-full"
-            alt=""
-          ></img>
-        </span>
-        <span className="m-10 flex flex-col justify-start text-left">
-          <span>
-            <span className="mb-16 flex items-center justify-between">
-              <h1 className="text-5xl font-semibold">
-                {cocktail && cocktail[0].strDrink}
-              </h1>
-              <form
-                onSubmit={(e) => handleFavoriteDrink(e, cocktail[0].idDrink)}
-              >
-                <button
-                  type="submit"
-                  name="favorite_drinks"
-                  value={favorite_drinks}
-                  onChange={handleFavoriteDrinkChange}
+    <div className="bg-red-50 h-screen pt-16">
+      <div className="flex justify-center">
+        <div className="w-2/3 flex justify-center items-center border">
+          <span className="p-10">
+            <img
+              src={cocktail && cocktail[0].strDrinkThumb}
+              className="border rounded max-w-xs"
+              alt=""
+            ></img>
+          </span>
+          <span className="p-10 flex flex-col text-left">
+            <span className="flex flex-col content-between">
+              <span className="pb-16 flex items-center justify-between">
+                <h1 className="text-5xl font-semibold underline">
+                  {cocktail && cocktail[0].strDrink}
+                </h1>
+                <form
+                  onSubmit={(e) => handleFavoriteDrink(e, cocktail[0].idDrink)}
                 >
-                  Favorite
-                </button>
-              </form>
+                  <button
+                    type="submit"
+                    name="favorite_drinks"
+                    value={favorite_drinks}
+                    onChange={handleFavoriteDrinkChange}
+                  >
+                    <img
+                      src="./../../../images/favorite.png"
+                      alt=""
+                      className="w-2/2 hover:opacity-70 focus:opacity-70"
+                    ></img>
+                  </button>
+                </form>
+              </span>
+              <span className="pb-10">
+                <p className="font-semibold">Ingridients:</p>
+                <ul className="pl-1">
+                  <li>{cocktail && cocktail[0].strIngredient1} </li>
+                  <li>{cocktail && cocktail[0].strIngredient2}</li>
+                  <li>{cocktail && cocktail[0].strIngredient3}</li>
+                  <li>{cocktail && cocktail[0].strIngredient4}</li>
+                  <li>{cocktail && cocktail[0].strIngredient5}</li>
+                  <li>{cocktail && cocktail[0].strIngredient6}</li>
+                  <li>{cocktail && cocktail[0].strIngredient7}</li>
+                  <li>{cocktail && cocktail[0].strIngredient8}</li>
+                  <li>{cocktail && cocktail[0].strIngredient9}</li>
+                  <li>{cocktail && cocktail[0].strIngredient10}</li>
+                  <li>{cocktail && cocktail[0].strIngredient11}</li>
+                  <li>{cocktail && cocktail[0].strIngredient12}</li>
+                  <li>{cocktail && cocktail[0].strIngredient13}</li>
+                  <li>{cocktail && cocktail[0].strIngredient14}</li>
+                  <li>{cocktail && cocktail[0].strIngredient15}</li>
+                </ul>
+              </span>
+              <span className="pb-5">
+                <h3 className="font-semibold">Preparation:</h3>
+                <p>{cocktail && cocktail[0].strInstructions}</p>
+              </span>
             </span>
-
-            <p className="font-semibold">Ingridients:</p>
-            <ul className="ml-2">
-              <li>{cocktail && cocktail[0].strIngredient1} </li>
-              <li>{cocktail && cocktail[0].strIngredient2}</li>
-              <li>{cocktail && cocktail[0].strIngredient3}</li>
-              <li>{cocktail && cocktail[0].strIngredient4}</li>
-              <li>{cocktail && cocktail[0].strIngredient5}</li>
-              <li>{cocktail && cocktail[0].strIngredient6}</li>
-              <li>{cocktail && cocktail[0].strIngredient7}</li>
-              <li>{cocktail && cocktail[0].strIngredient8}</li>
-              <li>{cocktail && cocktail[0].strIngredient9}</li>
-              <li>{cocktail && cocktail[0].strIngredient10}</li>
-              <li>{cocktail && cocktail[0].strIngredient11}</li>
-              <li>{cocktail && cocktail[0].strIngredient12}</li>
-              <li>{cocktail && cocktail[0].strIngredient13}</li>
-              <li>{cocktail && cocktail[0].strIngredient14}</li>
-              <li>{cocktail && cocktail[0].strIngredient15}</li>
-            </ul>
           </span>
-          <span className="mt-20">
-            <h3 className="font-semibold">Preparation:</h3>
-            <p>{cocktail && cocktail[0].strInstructions}</p>
-          </span>
-        </span>
+        </div>
       </div>
     </div>
   );

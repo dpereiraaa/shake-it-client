@@ -19,9 +19,8 @@ import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 
 function App() {
-  // const [searchButton, setSearchButton] = useState(false);
   return (
-    <div className="App">
+    <div className="App bg-red-50">
       <Navbar />
 
       <Routes>

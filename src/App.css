@@ -1,7 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro&family=Roboto&display=swap");
 
 * {
-  font-family: "Roboto";
+  font-family: "Readex Pro";
+  --tw-bg-opacity: 1;
+  background-color: rgba(254, 242, 242, var(--tw-bg-opacity));
 }
 
 .App {
