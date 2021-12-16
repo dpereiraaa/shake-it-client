@@ -31,7 +31,7 @@ function CocktailDetailsPage() {
 
       const authToken = localStorage.getItem("authToken");
       const response = await axios.put(
-        "http://localhost:5005/api/users/current",
+        process.env.REACT_APP_SERVER_URL + "/api/users/current",
         requestBody,
         {
           headers: { Authorization: `Bearer ${authToken}` },
@@ -39,7 +39,6 @@ function CocktailDetailsPage() {
       );
       setFavorite_drinks(true);
       setUser(response.data);
-      console.log("response.data :>> ", response.data);
     } catch (error) {
       setErrorMessage("Something went wrong");
     }

@@ -16,7 +16,7 @@ function ProfilePage() {
     const fetchData = async () => {
       const authToken = localStorage.getItem("authToken");
       const response = await axios.get(
-        "http://localhost:5005/api/users/current",
+        process.env.REACT_APP_SERVER_URL + "/api/users/current",
         { headers: { Authorization: `Bearer ${authToken}` } }
       );
       setUserFavorites(response.data.favorite_drinks);
@@ -28,7 +28,7 @@ function ProfilePage() {
     const fetchData = async () => {
       const authToken = localStorage.getItem("authToken");
       const response = await axios.get(
-        "http://localhost:5005/api/users/current",
+        process.env.REACT_APP_SERVER_URL + "/api/users/current",
         { headers: { Authorization: `Bearer ${authToken}` } }
       );
       setUserPosts(response.data.user_posts);
@@ -63,6 +63,13 @@ function ProfilePage() {
             alt=""
           ></img>
           <p className="font-bold text-xl md:text-5xl">{user && user.name}</p>
+          <Link to={"/edit-profile"}>
+            <img
+              src="./../../../images/settings.png"
+              alt=""
+              className="w-1/2"
+            ></img>
+          </Link>
         </span>
         <span>
           <p className=" flex justify-center font-bold text-2xl mb-10 ml-6">

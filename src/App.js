@@ -2,7 +2,6 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
-
 import HomePage from "./pages/HomePage/HomePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -14,6 +13,8 @@ import AddPostPage from "./pages/AddPostPage/AddPostPage";
 import AllPostsPage from "./pages/AllPostsPage/AllPostsPage";
 import ByCocktailsPage from "./pages/ByCocktailsPage/ByCocktailsPage";
 import ByIngridientsPage from "./pages/ByIngridientsPage/ByIngridientsPage";
+import ProfilePageEdit from "./pages/ProfilePageEdit/ProfilePageEdit";
+import Footer from "./components/Footer/Footer";
 
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
@@ -30,8 +31,7 @@ function App() {
           path="/profile"
           element={
             <IsPrivate>
-              {" "}
-              <ProfilePage />{" "}
+              <ProfilePage />
             </IsPrivate>
           }
         />
@@ -40,8 +40,7 @@ function App() {
           path="/signup"
           element={
             <IsAnon>
-              {" "}
-              <SignupPage />{" "}
+              <SignupPage />
             </IsAnon>
           }
         />
@@ -49,8 +48,7 @@ function App() {
           path="/login"
           element={
             <IsAnon>
-              {" "}
-              <LoginPage />{" "}
+              <LoginPage />
             </IsAnon>
           }
         />
@@ -88,11 +86,34 @@ function App() {
             </IsPrivate>
           }
         />
-        <Route path="/add-post" element={<AddPostPage />} />
-        <Route path="/all-posts" element={<AllPostsPage />} />
+        <Route
+          path="/edit-profile"
+          element={
+            <IsPrivate>
+              <ProfilePageEdit />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/add-post"
+          element={
+            <IsPrivate>
+              <AddPostPage />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/all-posts"
+          element={
+            <IsPrivate>
+              <AllPostsPage />
+            </IsPrivate>
+          }
+        />
 
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

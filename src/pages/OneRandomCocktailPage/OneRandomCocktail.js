@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 
 const apiURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
@@ -14,10 +13,8 @@ function OneRandomCocktailPage() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(apiURL);
-
       setCocktail(response.data.drinks);
     };
-
     fetchData();
   }, []);
 
@@ -30,7 +27,7 @@ function OneRandomCocktailPage() {
 
       const authToken = localStorage.getItem("authToken");
       const response = await axios.put(
-        "http://localhost:5005/api/users/current",
+        process.env.REACT_APP_SERVER_URL + "/api/users/current",
         requestBody,
         {
           headers: { Authorization: `Bearer ${authToken}` },
@@ -38,7 +35,6 @@ function OneRandomCocktailPage() {
       );
       setFavorite_drinks(true);
       setUser(response.data);
-      console.log("response.data :>> ", response.data);
     } catch (error) {
       setErrorMessage("Something went wrong");
     }

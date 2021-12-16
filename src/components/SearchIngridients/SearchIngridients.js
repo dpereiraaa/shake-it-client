@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
 import { Link } from "react-router-dom";
 
 const apiURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=";
@@ -20,9 +19,7 @@ function SearchIngridients() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(apiURL + searchTerm);
-
       setSearchResults(response.data.drinks);
-      console.log("object :>> ", response.data.drinks);
     };
 
     fetchData();
@@ -46,7 +43,7 @@ function SearchIngridients() {
           />
         </div>
       </div>
-      <div className="grid grid-cols-3 pl-44 pr-44 bg-red-50">
+      <div className="grid grid-cols-2 md:grid-cols-3 ml-44 mr-44">
         {searchResults &&
           searchResults.map((oneCocktail) => {
             return (
@@ -54,8 +51,9 @@ function SearchIngridients() {
                 key={oneCocktail.idDrink}
                 to={"/details/" + oneCocktail.idDrink}
                 onClick={clearOnClick}
+                className="mb-16"
               >
-                <div className="flex items-center space-x-5 mr-5 mt-20 hover:shadow hover:bg-red-100">
+                <div className="flex items-center space-x-5 mr-5 mt-20 hover:shadow-xl">
                   <img
                     src={oneCocktail.strDrinkThumb}
                     width="150px"

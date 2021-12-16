@@ -11,12 +11,14 @@ function AllPostsPage() {
     const fetchData = async () => {
       try {
         const authToken = localStorage.getItem("authToken");
-        const response = await axios.get("http://localhost:5005/api/allposts", {
-          headers: { Authorization: `Bearer ${authToken}` },
-        });
+        const response = await axios.get(
+          process.env.REACT_APP_SERVER_URL + "/api/allposts",
+          {
+            headers: { Authorization: `Bearer ${authToken}` },
+          }
+        );
 
         let mostRecent = response.data.reverse();
-        console.log("response.data :>> ", response.data);
         setAllPosts(mostRecent);
       } catch (error) {}
     };
@@ -32,7 +34,7 @@ function AllPostsPage() {
 
       const authToken = localStorage.getItem("authToken");
       await axios.post(
-        "http://localhost:5005/api/add-post-comment/" + postId,
+        process.env.REACT_APP_SERVER_URL + "/api/add-post-comment/" + postId,
         requestBody,
         {
           headers: { Authorization: `Bearer ${authToken}` },
@@ -99,9 +101,9 @@ function AllPostsPage() {
                     {onePost &&
                       onePost.comments.map((comment) => {
                         return (
-                          <div>
+                          <div key={comment._id}>
                             <p>Comments:</p>
-                            <div key={comment._id} className="flex rounded">
+                            <div className="flex rounded">
                               <p className="font-semibold text-base mr-2">
                                 {comment.comment_author.name}:
                               </p>

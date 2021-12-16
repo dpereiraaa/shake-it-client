@@ -40,7 +40,6 @@ function RandomCocktails() {
       );
 
       setCocktails(tenResponses);
-      console.log("cocktails :>> ", cocktails);
     };
 
     fetchData();

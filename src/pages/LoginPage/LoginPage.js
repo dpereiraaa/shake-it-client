@@ -27,7 +27,7 @@ function LoginPage(props) {
 
       const authToken = localStorage.getItem("authToken");
       const response = await axios.post(
-        "http://localhost:5005/auth/login",
+        process.env.REACT_APP_SERVER_URL + "/auth/login",
         requestBody,
         { headers: { Authorization: `Bearer ${authToken}` } }
       );
@@ -87,7 +87,6 @@ function LoginPage(props) {
                 to={"/signup"}
                 className="p-1 bg-red-200 rounded-full hover:bg-red-400 text-sm"
               >
-                {" "}
                 Sign Up
               </Link>
             </form>

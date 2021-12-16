@@ -1,10 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import fileService from "../../services/file.service";
 
-function AddPostPage(props) {
+function AddPostPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -22,9 +21,13 @@ function AddPostPage(props) {
       const requestBody = { title, description, image: imageUrl };
 
       const authToken = localStorage.getItem("authToken");
-      await axios.post("http://localhost:5005/api/create-post", requestBody, {
-        headers: { Authorization: `Bearer ${authToken}` },
-      });
+      await axios.post(
+        process.env.REACT_APP_SERVER_URL + "/api/create-post",
+        requestBody,
+        {
+          headers: { Authorization: `Bearer ${authToken}` },
+        }
+      );
 
       navigate("/all-posts");
     } catch (error) {
