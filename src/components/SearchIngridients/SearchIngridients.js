@@ -33,7 +33,7 @@ function SearchIngridients() {
   }
 
   return (
-    <div>
+    <div className="bg-red-50 h-screen pt-16">
       <div className="flex justify-center items-center space-x-5">
         <div className="flex justify-center items-center">
           <input
@@ -45,7 +45,7 @@ function SearchIngridients() {
           />
         </div>
       </div>
-      <div className="grid grid-cols-3 ml-44 mr-44">
+      <div className="grid grid-cols-3 pl-44 pr-44 bg-red-50">
         {searchResults &&
           searchResults.map((oneCocktail) => {
             return (
@@ -54,7 +54,7 @@ function SearchIngridients() {
                 to={"/details/" + oneCocktail.idDrink}
                 onClick={clearOnClick}
               >
-                <div className="flex items-center space-x-5 mr-5 mt-20 hover:shadow hover:bg-gray-50">
+                <div className="flex items-center space-x-5 mr-5 mt-20 hover:shadow hover:bg-red-100">
                   <img
                     src={oneCocktail.strDrinkThumb}
                     width="150px"

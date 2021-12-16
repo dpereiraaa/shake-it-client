@@ -56,8 +56,8 @@ function ProfilePage() {
 
   return (
     <div className="flex justify-center">
-      <div className="w-3/4 bg-red-100 rounded h-screen">
-        <span className="flex justify-start items-center mt-12 mb-12 ml-6 space-x-7">
+      <div className="w-3/4 bg-red-100 rounded h-full">
+        <span className="flex justify-center items-center mt-12 mb-12 ml-6 space-x-7">
           <img
             src={user && user.image}
             className="rounded-full w-24 h-24"
@@ -66,7 +66,7 @@ function ProfilePage() {
           <p className="font-bold text-5xl">{user && user.name}</p>
         </span>
         <span>
-          <p className=" flex justify-start font-bold text-2xl mb-10 ml-6">
+          <p className=" flex justify-center font-bold text-2xl mb-10 ml-6">
             Favorite Cocktails:
           </p>
           <span className="grid grid-cols-3">
@@ -90,7 +90,7 @@ function ProfilePage() {
                 );
               })}
           </span>
-          <p className=" flex justify-start font-bold text-2xl mt-10 mb-10 ml-6">
+          <p className=" flex justify-center font-bold text-2xl mt-10 mb-10 ml-6">
             Posts:
           </p>
           <span className="grid grid-cols-3">

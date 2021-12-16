@@ -8,7 +8,7 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav className="mb-16">
+    <nav className="bg-red-50">
       {isLoggedIn && (
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">

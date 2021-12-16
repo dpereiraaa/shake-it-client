@@ -16,6 +16,7 @@ function AllPostsPage() {
         });
 
         let mostRecent = response.data.reverse();
+        console.log("response.data :>> ", response.data);
         setAllPosts(mostRecent);
       } catch (error) {}
     };
@@ -47,35 +48,74 @@ function AllPostsPage() {
   };
 
   return (
-    <div className="m-10 flex flex-col justify-center items-center">
-      {allposts &&
-        allposts.map((onePost) => {
-          return (
-            <div key={onePost._id}>
-              <p>{onePost.post_author.name}</p>
-              <p>{onePost.title}</p>
-              <p>{onePost.description}</p>
-              <img src={onePost.image} width="300px"></img>
-              {onePost.comments.map((comment) => {
-                return (
-                  <div key={comment._id}>
-                    <p>{comment.comment_description}</p>
-                  </div>
-                );
-              })}
-              <p>Add comment:</p>
-              <form onSubmit={(e) => handleComment(e, onePost._id)}>
-                <input
-                  type="text"
-                  name="comment_description"
-                  value={comment_description}
-                  onChange={handleCommentChange}
-                ></input>
-                <button type="submit">Comment!</button>
-              </form>
-            </div>
-          );
-        })}
+    <div className="flex flex-col justify-center items-center bg-red-50 h-full pt-16">
+      <div className="">
+        {allposts &&
+          allposts.map((onePost) => {
+            return (
+              <div
+                key={onePost._id}
+                className="mb-10 border border-gray-500 rounded p-10 pl-20 pr-20"
+              >
+                <span className="flex items-center space-x-4 mb-4">
+                  <img
+                    src={onePost.post_author.image}
+                    width="50px"
+                    alt=""
+                    className="rounded-full"
+                  ></img>
+                  <p className="font-semibold text-xl">
+                    {onePost.post_author.name}
+                  </p>
+                </span>
+                <span className="">
+                  <img
+                    src={onePost.image}
+                    width="300px"
+                    alt=""
+                    className="rounded-lg border border-black"
+                  ></img>
+                </span>
+                <span className="flex mt-2 space-x-1">
+                  <p className="font-semibold text-base">
+                    {onePost.post_author.name}:
+                  </p>
+                  <p> {onePost.description}</p>
+                </span>
+                <span className="flex justify-start mt-3">
+                  <form onSubmit={(e) => handleComment(e, onePost._id)}>
+                    <button type="submit">Comment: </button>
+                    <input
+                      type="text"
+                      name="comment_description"
+                      value={comment_description}
+                      onChange={handleCommentChange}
+                      className="bg-red-50 border border-gray-400 focus:border-black focus:bg-gray-50 ml-2 "
+                    ></input>
+                  </form>
+                </span>
+                <span className="flex flex-col text-left">
+                  <span>
+                    {onePost &&
+                      onePost.comments.map((comment) => {
+                        return (
+                          <div>
+                            <p>Comments:</p>
+                            <div key={comment._id} className="flex rounded">
+                              <p className="font-semibold text-base mr-2">
+                                {comment.comment_author.name}:
+                              </p>
+                              <p>{comment.comment_description}</p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </span>
+                </span>
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 }
