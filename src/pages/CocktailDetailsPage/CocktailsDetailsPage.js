@@ -17,7 +17,6 @@ function CocktailDetailsPage() {
       const response = await axios.get(apiURL + cocktailId);
 
       setCocktail(response.data.drinks);
-      console.log("object :>> ", response.data.drinks);
     };
 
     fetchData();
