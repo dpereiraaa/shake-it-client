@@ -40,26 +40,45 @@ function RandomCocktails() {
       );
 
       setCocktails(tenResponses);
+      console.log("cocktails :>> ", cocktails);
     };
 
     fetchData();
   }, []);
 
   return (
-    <div className="grid grid-cols-3">
-      {cocktails.map((oneCocktail) => {
-        return (
-          <Link
-            key={oneCocktail[0].idDrink}
-            to={"/details/" + oneCocktail[0].idDrink}
-          >
-            <div className="flex flex-col justify-center items-center">
-              <img src={oneCocktail[0].strDrinkThumb} width="150px"></img>
-              <p>{oneCocktail[0].strDrink}</p>
-            </div>
-          </Link>
-        );
-      })}
+    <div>
+      <div>
+        <h1 className="text-4xl font-medium mb-10">Popular Cocktails</h1>
+      </div>
+      <div className="grid grid-cols-3 h-screen ml-44 mr-44">
+        {cocktails.map((oneCocktail) => {
+          return (
+            <Link
+              key={oneCocktail[0].idDrink}
+              to={"/details/" + oneCocktail[0].idDrink}
+            >
+              <div className="flex items-center space-x-5 mr-5 hover:shadow hover:bg-gray-50">
+                <img
+                  src={oneCocktail[0].strDrinkThumb}
+                  width="150px"
+                  className="rounded"
+                  alt=""
+                ></img>
+                <span className="text-left">
+                  <p className="text-lg font-extrabold">
+                    {oneCocktail[0].strDrink}
+                  </p>
+                  <span>
+                    <p>{oneCocktail[0].strCategory}</p>
+                    <p>{oneCocktail[0].strAlcoholic}</p>
+                  </span>
+                </span>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 }

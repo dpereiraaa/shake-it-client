@@ -33,16 +33,18 @@ function SearchCocktails() {
 
   return (
     <div>
-      <div className="flex justify-center items-center">
-        <input
-          type="text"
-          placeholder="Search"
-          value={searchTerm}
-          onChange={handleSearchTerm}
-          className="border-2 border-black rounded-md"
-        />
+      <div className="flex justify-center items-center space-x-5">
+        <div className="flex justify-center items-center">
+          <input
+            type="text"
+            placeholder=" Search"
+            value={searchTerm}
+            onChange={handleSearchTerm}
+            className=" w-64 h-8 border border-gray-400 focus:border-black"
+          />
+        </div>
       </div>
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-3 ml-44 mr-44">
         {searchResults &&
           searchResults.map((oneCocktail) => {
             return (
@@ -51,9 +53,22 @@ function SearchCocktails() {
                 to={"/details/" + oneCocktail.idDrink}
                 onClick={clearOnClick}
               >
-                <div className="flex flex-col justify-center items-center">
-                  <img src={oneCocktail.strDrinkThumb} width="150px"></img>
-                  <h1>{oneCocktail.strDrink}</h1>
+                <div className="flex items-center space-x-5 mr-5 mt-20 hover:shadow hover:bg-gray-50">
+                  <img
+                    src={oneCocktail.strDrinkThumb}
+                    width="150px"
+                    className="rounded"
+                    alt=""
+                  ></img>
+                  <span className="text-left">
+                    <p className="text-lg font-extrabold">
+                      {oneCocktail.strDrink}
+                    </p>
+                    <span>
+                      <p>{oneCocktail.strCategory}</p>
+                      <p>{oneCocktail.strAlcoholic}</p>
+                    </span>
+                  </span>
                 </div>
               </Link>
             );

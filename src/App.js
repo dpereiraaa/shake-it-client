@@ -18,20 +18,11 @@ import ByIngridientsPage from "./pages/ByIngridientsPage/ByIngridientsPage";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 
-import { useState } from "react";
-
 function App() {
   // const [searchButton, setSearchButton] = useState(false);
   return (
     <div className="App">
       <Navbar />
-      {/* <div>
-        <button onClick={() => setSearchButton(!searchButton)}>
-          {searchButton ? "Search by Cocktails" : "Search by Ingridients"}
-          {searchButton && <SearchCocktails />}
-        </button>
-        {!searchButton && <SearchIngridients />}
-      </div> */}
 
       <Routes>
         <Route path="/" element={<HomePage />} />
