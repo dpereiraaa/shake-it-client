@@ -16,9 +16,12 @@ function AuthProviderWrapper({ children }) {
       const storedToken = localStorage.getItem("authToken");
 
       if (storedToken) {
-        const response = await axios.get("http://localhost:5005/auth/verify", {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        });
+        const response = await axios.get(
+          `${process.env.REACT_APP_SERVER_URL}/auth/verify`,
+          {
+            headers: { Authorization: `Bearer ${storedToken}` },
+          }
+        );
 
         // or with a service
         // const response = await authService.verify();
