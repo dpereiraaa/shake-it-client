@@ -1,41 +1,41 @@
-&lt;br&gt;
+# Shake it
 
-\# Shake it
+<br>
 
-&lt;br&gt;
+## Description
 
-\## Description
+[Deployed App Link\](https://gracious-lumiere-0fab2c.netlify.app/)
 
 Have friends over and don't know which cocktail to make? No worries.. With this app, you can search any cocktail's recipe!
 
 I've used [CocktailsDB API](https://www.thecocktaildb.com/api.php)
 
-\## User Stories
+## User Stories
 
-\-  \*\*404:\*\* As a user I get to see a 404 page with a feedback message if I try to reach a page that does not exist so that I know it's my fault.
-\-  \*\*Signup:\*\* As an anonymous user I can sign up on the platform so that I can search for cocktail recipes.
-\-  \*\*Login:\*\* As a user I can login to the platform so that I can access my profile and start searching for recipes and post pictures of what I made.
-\-  \*\*Logout:\*\* As a logged in user I can logout from the platform so no one else can use it.
-\-  \*\*Profile Page\*\*: As a logged in user I can visit my profile page so that I can access the edit page and see my favorite cocktails.
-\-  \*\*Cocktails:\*\* As a user I want to click and visit each cocktail page, so I can see the recipe and images of it.
-\-  \*\*Random cocktail:\*\* As a use i want to click on the random cocktail, so I can get a random cocktail recipe to surprise myself.
-\-  \*\*Add posts:\*\* As a user I can add a post with a picture of the cocktail that I made, so people can see.
-\-  \*\*By ingridient:\*\* As a user I want to search a cocktail by an ingridient.
-\-  \*\*View Ranks:\*\* As a user I want to see the feed so that I can see what people are posting.
+-  **404:** As a user I get to see a 404 page with a feedback message if I try to reach a page that does not exist so that I know it's my fault.
+-  **Signup:** As an anonymous user I can sign up on the platform so that I can search for cocktail recipes.
+-  **Login:** As a user I can login to the platform so that I can access my profile and start searching for recipes and post pictures of what I made.
+-  **Logout:** As a logged in user I can logout from the platform so no one else can use it.
+-  **Profile Page**: As a logged in user I can visit my profile page so that I can access the edit page and see my favorite cocktails.
+-  **Cocktails:** As a user I want to click and visit each cocktail page, so I can see the recipe and images of it.
+-  **Random cocktail:** As a use i want to click on the random cocktail, so I can get a random cocktail recipe to surprise myself.
+-  **Add posts:** As a user I can add a post with a picture of the cocktail that I made, so people can see.
+-  **By ingridient:** As a user I want to search a cocktail by an ingridient.
+-  **View Ranks:** As a user I want to see the feed so that I can see what people are posting.
 
-&lt;br&gt;
+<br>
 
-\## Backlog
+## Backlog
 
-&lt;br&gt;
+<br>
 
 
-\# Client / Frontend
+# Client / Frontend
 
-\## React Router Routes (React App)
+## React Router Routes (React App)
 
-| Path                         | Component            | Permissions                | Behavior                                                  |
-| \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- | \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- | \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- | \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- |
+| **Path** | **Component** | **Permissions** | **Behavior** |
+| ---------- | ---------- | ----------- | ---------- |
 | `/login`                     | LoginPage            | anon only `&lt;AnonRoute&gt;`    | Login form, navigates to home page after login.           |
 | `/signup`                    | SignupPage           | anon only  `&lt;AnonRoute&gt;`   | Signup form, navigates to home page after signup.         |
 | `/`                          | HomePage             | public `&lt;Route&gt;`           | Home page.                                                |
@@ -48,58 +48,58 @@ I've used [CocktailsDB API](https://www.thecocktaildb.com/api.php)
 
 
 
-\## Components
+## Components
 
 Pages:
 
-\- LoginPage
+- LoginPage
 
-\- SignupPage
+- SignupPage
 
-\- HomePage
+- HomePage
 
-\- ProfilePage
+- ProfilePage
 
-\- EditProfilePage
+- EditProfilePage
 
-\- CocktailDetailsPage
+- CocktailDetailsPage
 
-\- RandomCocktail
+- RandomCocktail
 
-\- byIngridient
+- byIngridient
 
-\- PostsFeed
+- PostsFeed
   
 
 Components:
 
-\- CocktailsCard
-\- PostsCard
-\- ProfileCard
-\- Navbar
+- CocktailsCard
+- PostsCard
+- ProfileCard
+- Navbar
 
 
 
 
 
 
-\## Services
+## Services
 
-\- \*\*Auth Service\*\*
+- **Auth Service**
 
-  \- \`authService\` :
+  - \`authService\` :
     \- `.login(user)`
     \- `.signup(user)`
     \- `.logout()`
     \- `.validate()`
 
-\- \*\*User Service\*\*
+- **User Service**
 
-  \- \`userService\` :
+  - \`userService\` :
     \- `.updateCurrentUser(id, userData)`
     \- `.getCurrentUser()`
 
-\- \*\*Cocktails Service\*\*
+- **Cocktails Service**
 
   \- \`Cocktails Service\` :
     \- `.searchCocktails`
@@ -110,15 +110,14 @@ Components:
 
 
 
-&lt;br&gt;
+<br>
+
+# Server / Backend
 
 
-\# Server / Backend
+## Models
 
-
-\## Models
-
-\*\*User model\*\*
+**User model**
 
 ```javascript
 {
@@ -133,7 +132,7 @@ Components:
 
 
 
-\*\*Posts model\*\*
+**Posts model**
 
 ```javascript
   {
@@ -150,8 +149,7 @@ Components:
 ```
 
 
-
-\*\*Comments model\*\*
+**Comments model**
 
 ```javascript
 COMMENTS: 
@@ -167,13 +165,13 @@ COMMENTS:
 
 
 
-&lt;br&gt;
+<br>
 
 
-\## API Endpoints (backend routes)
+## API Endpoints (backend routes)
 
-| HTTP Method | URL                    | Request Body                 | Success status | Error Status | Description                                                  |
-| \-\-\-\-\-\-\-\-\-\-\- | \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- | \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- | \-\-\-\-\-\-\-\-\-\-\-\-\-\- | \-\-\-\-\-\-\-\-\-\-\-\- | \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- |
+| **HTTP Method** | **URL**                    | **Request Body**                 | **Success status** | **Error Status** | **Description**                                                  |
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | GET         | `/auth/profile    `    | Saved session                | 200            | 404          | Check if user is logged in and return profile page           |
 | POST        | `/auth/signup`         | {name, email, password}      | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
 | POST        | `/auth/login`          | {username, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
@@ -186,17 +184,17 @@ COMMENTS:
 | POST         | `/api/posts-feed` |                              |   200         |              | Show all posts on feed                                     |
 
 
-&lt;br&gt;
+<br>
 
 
-\## Links
+## Links
 
-\### Git
+### Git
 
 The url to your repository and to your deployed project
 
-\[Client repository Link\](https://github.com/dpereiraaa/shake-it-client)
+[Client repository Link\](https://github.com/dpereiraaa/shake-it-client)
 
-\[Server repository Link\](https://github.com/dpereiraaa/shake-it-server)
+[Server repository Link\](https://github.com/dpereiraaa/shake-it-server)
 
-\[Deployed App Link\](https://gracious-lumiere-0fab2c.netlify.app/)
+[Deployed App Link\](https://gracious-lumiere-0fab2c.netlify.app/)
