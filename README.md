@@ -4,7 +4,7 @@
 
 ## Description
 
-[Deployed App Link\](https://gracious-lumiere-0fab2c.netlify.app/)
+[Deployed App Link\](https://shakeitrecipes.netlify.app/)
 
 Have friends over and don't know which cocktail to make? No worries.. With this app, you can search any cocktail's recipe!
 
