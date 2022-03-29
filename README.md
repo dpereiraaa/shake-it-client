@@ -197,4 +197,4 @@ The url to your repository and to your deployed project
 
 [Server repository Link\](https://github.com/dpereiraaa/shake-it-server)
 
-[Deployed App Link\](https://gracious-lumiere-0fab2c.netlify.app/)
+[Deployed App Link\](https://shakeitrecipes.netlify.app/)
